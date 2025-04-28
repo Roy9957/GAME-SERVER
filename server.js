@@ -7,8 +7,8 @@ const rateLimit = require('express-rate-limit');
 app.use(cors({
   origin: [
     'http://localhost:3000',        // Local development
-    'http://localhost:5173',        // Common Vite port
-    'https://*.vercel.app',         // All Vercel deployments
+    'http://localhost:7700',        // Common Vite port
+    'https://game-server-five.vercel.app',         // All Vercel deployments
     'https://your-game-domain.com'  // Your production domain
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
