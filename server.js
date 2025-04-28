@@ -9,7 +9,7 @@ app.use(cors({
     'http://localhost:3000',        // Local development
     'http://localhost:7700',        // Common Vite port
     'https://game-server-five.vercel.app',         // All Vercel deployments
-    'https://your-game-domain.com'  // Your production domain
+    'https://www.mobe-game.rf.gd'  // Your production domain
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
