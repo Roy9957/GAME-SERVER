@@ -1,22 +1,39 @@
 // Importing dependencies
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Game server URL
-const gameServerURL = 'http://localhost:7700';  // Replace this with your actual game server URL
+// Enable CORS for specific domains
+const allowedOrigins = [
+  'http://localhost:7700',
+  'https://www.mobe-game.rf.gd'
+];
 
-// Route to load game data
+app.use(cors({
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow the origin
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject the origin
+    }
+  }
+}));
+
+// Route to load game data (fetching game server data here)
 app.get('/load-game', async (req, res) => {
   try {
-    // Fetch data from game server
-    const response = await axios.get(gameServerURL);
-    res.json(response.data);  // Send the data from the game server to the client
+    // Since the game server is now this server, you can handle the game's response here
+    // Example: Send some mock data or a status
+    res.json({
+      status: 'Game data successfully loaded!',
+      gameInfo: 'Sample game information'
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data from the game server' });
+    res.status(500).json({ error: 'Failed to process game data' });
   }
 });
 
