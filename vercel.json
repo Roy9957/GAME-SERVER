@@ -23,7 +23,7 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "regions": ["sin1",
+  "regions": ["sin1"], 
   "features": {
     "edge-functions": false
   }
