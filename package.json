@@ -16,5 +16,7 @@
   },
   "engines": {
     "node": "16.x"  
-  }
+  },
+  "author": "Roy9957",
+  "license": "MIT"
 }
