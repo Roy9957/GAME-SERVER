@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Game server URL
-const gameServerURL = 'https://game-server-five.vercel.app';  // Replace this with your actual game server URL
+const gameServerURL = 'http://localhost:7700';  // Replace this with your actual game server URL
 
 // Route to load game data
 app.get('/load-game', async (req, res) => {
