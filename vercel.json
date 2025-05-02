@@ -24,7 +24,6 @@
       "maxDuration": 30
     }
   },
-  "regions": ["sin1"],
   "env": {
     "NODE_ENV": "production"
   }
