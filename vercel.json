@@ -3,14 +3,29 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "includeFiles": ["firebase-credentials.json"],
+        "suppressResponse": false
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "server.js",
-      "methods": ["GET", "POST", "OPTIONS", "PUT", "DELETE"]
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]
     }
-  ]
+  ],
+  "functions": {
+    "server.js": {
+      "memory": 3008,
+      "maxDuration": 30
+    }
+  },
+  "regions": ["sin1"],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
