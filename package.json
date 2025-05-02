@@ -1,18 +1,22 @@
 {
-  "name": "game-server-client",
+  "name": "mobe-game-server",
   "version": "1.0.0",
-  "description": "Client to interact with the game server",
+  "description": "Server for MOBE game",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "vercel dev",
-    "build": "vercel build"
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "axios": "^1.2.0"
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=16.0.0"
   }
 }
