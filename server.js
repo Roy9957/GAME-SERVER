@@ -2,6 +2,7 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const fs = require('fs');
 
 // Initialize Express app
 const app = express();
@@ -26,15 +27,31 @@ app.use(cors({
 // Route to load game data (fetching game server data here)
 app.get('/load-game', async (req, res) => {
   try {
-    // Since the game server is now this server, you can handle the game's response here
-    // Example: Send some mock data or a status
+    // Simulate some game data or fetch actual data if needed
+    // If you want to connect to another service, you can use axios here
+
+    // For now, sending mock data
     res.json({
       status: 'Game data successfully loaded!',
       gameInfo: 'Sample game information'
     });
   } catch (error) {
+    console.error('Error fetching game data:', error);  // Log error
     res.status(500).json({ error: 'Failed to process game data' });
   }
+});
+
+// Global Error Handling - Catch all uncaught errors
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+  fs.appendFileSync('error.log', `${new Date()} - Uncaught Exception: ${err}\n`);
+  process.exit(1); // Exit the process after logging
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Promise Rejection:', err);
+  fs.appendFileSync('error.log', `${new Date()} - Unhandled Promise Rejection: ${err}\n`);
+  process.exit(1); // Exit the process after logging
 });
 
 // Starting the server
